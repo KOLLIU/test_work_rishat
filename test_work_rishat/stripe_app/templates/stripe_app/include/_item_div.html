@@ -1,0 +1,13 @@
+<div>
+    <a href="{% url 'get_item' item.id%}">{{item.name}}</a>
+
+    <br>
+    {{item.description}}<br>
+    {{item.price}}₽<br>
+    <button onclick="get_session_id(&quot{% url 'buy' item.id%}&quot)">Купить {{item.id}}</button>
+
+    {% for discount in discounts%}
+    <br>
+    <button onclick="get_session_id(&quot{% url 'discount_buy' item.id discount.id%}&quot)">Купить Товар {{item.id}} -{{ discount.percent_off}}%</button>
+    {% endfor %}
+</div>

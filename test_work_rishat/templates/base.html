@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+
+
+    <script type="text/javascript">
+
+    function get_session_id(url){
+        var stripe = Stripe('pk_test_51Lngm2Iwv64PAvPrDmhFwTjUXeLY0GxxVNwyjCbKg8AkmcncdthXaXRbm856uWFNB9Vmm5bsAYVLMstzOhRAwH4o00x899tTkU');
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", url, false ); // false for synchronous request
+        xmlHttp.send( null );
+        console.log(xmlHttp.responseText);
+        stripe.redirectToCheckout({sessionId: xmlHttp.responseText})
+        return xmlHttp.responseText;
+    }
+
+    </script>
+
+</head>
+<body>
+<a href="/admin">Панель администратора</a><br><br>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

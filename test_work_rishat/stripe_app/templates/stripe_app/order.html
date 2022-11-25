@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'create_order'%}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Заказать</button>
+</form>
+<a href="{% url 'get_items' %}">Ко всем товаам</a>
+</body>
+</html>

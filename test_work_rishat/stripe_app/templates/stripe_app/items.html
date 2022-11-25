@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for item in items %}
+{% include 'stripe_app/include/_item_div.html'%}
+<br><br><br>
+{% endfor %}
+
+<a href="{% url 'create_order' %}">Создать заказ</a>
+
+{% endblock %}
